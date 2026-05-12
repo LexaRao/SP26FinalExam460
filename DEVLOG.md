@@ -27,12 +27,12 @@
 
 ---
 
-## Entry 2 – [Date]: [Short description]
+## Entry 2 – 05/12/2026: Added all parts of part 2 except the distance counter.
 
 > Required. At least one entry must describe a bug, wrong assumption, or design change
 > you encountered. Describe what went wrong and how you resolved it.
 
-_Your entry here._
+    Added all portions the part two of the program except the distance counter.  Took steps to debug the run_dijkstra subprogram.  Allows for different programs to function as they are intended two.  Returns the greedy solution for the given input.  The readme has been implemented as well.
 
 ---
 

@@ -2,8 +2,8 @@
 CS 460 – Algorithms: Final Programming Assignment
 The Torchbearer
 
-Student Name: __Lexa Hope________________
-Student ID:   __828505412________________
+Student Name: ___________________________
+Student ID:   ___________________________
 
 INSTRUCTIONS
 ------------
@@ -18,8 +18,6 @@ Submit this file as: torchbearer.py
 """
 
 import heapq
-from json.encoder import INFINITY
-from platform import node
 
 
 # =============================================================================
@@ -67,24 +65,8 @@ def select_sources(spawn, relics, exit_node):
 
     TODO
     """
-    # Create set that will contain the data from the source nodes.
-    returnSet = {None}
+    pass
 
-    # Append the head none labled the spawn node to the returnSet.
-    returnSet.add(spawn)
-
-    # For all the lements in the relics list append them to the returnSet.
-    for element in relics:
-        returnSet.add(element)
-
-    # Append the exit node to the returnSet.
-    returnSet.add(exit_node)
-
-    # Convert the set to a list.
-    returnList = list(returnSet)
-
-    # Return the return list containing the source.
-    return returnList
 
 def run_dijkstra(graph, source):
     """
@@ -102,41 +84,8 @@ def run_dijkstra(graph, source):
 
     TODO
     """
-    # Create a dictionary for storing the minimum elements.
-    lengthDict = dict[node, float]
-    lengthDict = [source, 0.0]
-    for element in graph: # Add the empty dictionary list.
-        lengthDict.append(element, INFINITY)
+    pass
 
-    # Create a for loop for iterating through each of the nodes and determine the lower cost from source to that element.
-    for elementX in graph:
-        # Create the required set for storing the greedy solution.
-        greedyPath = [source, 0]
-        optimalCost = {0} # Keep track of optimal cost by removing duplicate entries.
-
-        # Create a value for storing the last wieght.
-        lastWeight = INFINITY
-
-        # Cross examine the current element against all other elements to determine if it has the smallest length.
-        for elementY in elementX: # Cycle sorting.
-            if elementY != elementX[0]: # If the element are not equal.
-                if (elementY[1] < lastWeight): # Append the greedy choice.
-                    greedyPath.append(elementY[0], elementY[1]) # Append the smaller length.
-                    optimalCost.add(elementY[1]) # Add elements to a set to prevent duplicate entries.
-                    lastWeight = elementY[1] # Determine the smallest last weight.
-            else: # The algorithm has reach the destination path so exit the loop.
-                greedyPath.append(elementY[0], elementY[1]) # Append the destination cost.
-                optimalCost.add(elementY[1]) # Add the transaction cost to get to the destination to the entries.
-                break
-
-        # Determine the optimal cost of all element in the list.
-        optimalCostValue = sum(optimalCost)
-
-        # Append the element and it cost.
-        lengthDict[elementX] = optimalCostValue
-
-    # Return the minimal costs to get from source to each element in the list.
-    return lengthDict
 
 def precompute_distances(graph, spawn, relics, exit_node):
     """
@@ -155,7 +104,7 @@ def precompute_distances(graph, spawn, relics, exit_node):
 
     TODO
     """
-    
+    pass
 
 
 # =============================================================================
