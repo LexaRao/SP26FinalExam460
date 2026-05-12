@@ -1,7 +1,7 @@
 # The Torchbearer
 
-**Student Name:** ___________________________
-**Student ID:** ___________________________
+**Student Name:** ___Lexa Hope______________
+**Student ID:** ___828505412________________
 **Course:** CS 460 – Algorithms | Spring 2026
 
 > This README is your project documentation. Write it the way a developer would document
@@ -17,13 +17,13 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  _Your answer here._
+  * A single Dijkstra-algorithm process being run is not sufficient since it cannot choose which path covers every relic chamber.  It can also not determine if each node on the path will be accessible from the last node on the path it chooses using the Dijkstra algorithm without being run more than once.
 
 - **What decision remains after all inter-location costs are known:**
-  _Your answer here._
+  * After the travel costs are known, the remaining decision is to calculate the cheapest path that uses the least amount of fuel.  Calculating this path will require determining which of the inter-location costs decision leads to an optimal solution.
 
 - **Why this requires a search over orders (one sentence):**
-  _Your answer here._
+  * This is a search over orders and not a single computation since it requires us to determine which of the shortest paths found using Dijkstra's shortest algorithm is the optimal solution with the least fuel used.
 
 ---
 

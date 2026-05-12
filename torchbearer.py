@@ -29,8 +29,17 @@ def explain_problem():
     Returns
     -------
     str
-        Your Part 1 README answers, written as a string.
-        Must match what you wrote in README Part 1.
+        A single Dijkstra-algorithm process being run is not sufficient since it 
+        cannot choose which path covers every relic chamber. It can also not 
+        determine if each node on the path will be accessible from the last node 
+        on the path it chooses using the Dijkstra algorithm without being run 
+        more than once.  After the travel costs are known, the remaining decision 
+        is to calculate the cheapest path that uses the least amount of fuel. 
+        Calculating this path will require determining which of the 
+        inter-location costs decision leads to an optimal solution.  This is a 
+        search over orders and not a single computation since it requires us to 
+        determine which of the shortest paths found using Dijkstra's shortest 
+        algorithm is the optimal solution with the least fuel used.
 
     TODO
     """
