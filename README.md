@@ -17,13 +17,13 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  * A single Dijkstra-algorithm process being run is not sufficient since it cannot choose which path covers every relic chamber.  It can also not determine if each node on the path will be accessible from the last node on the path it chooses using the Dijkstra algorithm without being run more than once.
+  * A single Dijkstra-algorithm process being run is not sufficient since it cannot choose which path covers every relic chamber. [1]  It can also not determine if each node on the path will be accessible from the last node on the path it chooses using the Dijkstra algorithm without being run more than once. [1]
 
 - **What decision remains after all inter-location costs are known:**
-  * After the travel costs are known, the remaining decision is to calculate the cheapest path that uses the least amount of fuel.  Calculating this path will require determining which of the inter-location costs decision leads to an optimal solution.
+  * After the travel costs are known, the remaining decision is to calculate the cheapest path that uses the least amount of fuel. [1]  Calculating this path will require determining which of the inter-location costs decision leads to an optimal solution. [3]
 
 - **Why this requires a search over orders (one sentence):**
-  * This is a search over orders and not a single computation since it requires us to determine which of the shortest paths found using Dijkstra's shortest algorithm is the optimal solution with the least fuel used.
+  * This is a search over orders and not a single computation since it requires us to determine which of the shortest paths found using Dijkstra's shortest algorithm is the optimal solution with the least fuel used. [1][3]
 
 ---
 
@@ -35,8 +35,8 @@
 
 | Source Node Type | Why it is a source |
 |---|---|
-| _node type_ | _one-line reason_ |
-| _node type_ | _one-line reason_ |
+| Relic Chambers | A chamber that contains a relic that must be collected during the trip. [5] |
+| Dungeon Location | A chamber, junction, or trap door that is visited along the way to a relic or the destination. [5] |
 
 ### Part 2b: Distance Storage
 
@@ -44,20 +44,22 @@
 
 | Property | Your answer |
 |---|---|
-| Data structure name | |
-| What the keys represent | |
-| What the values represent | |
-| Lookup time complexity | |
-| Why O(1) lookup is possible | |
+| Data structure name | Dictionary |
+| What the keys represent | Key represents the input value that is used to match the data. |
+| What the values represent | The value represents the distance stored in the dictionary for a given key. |
+| Lookup time complexity | The lookup time complexity is O(n), given that the whole dictionary must be searched for one length. |
+| Why O(1) lookup is possible | This is possible given that if the key is provided and the algorithm does not have to search for it, the C++ compiler, interpreting the dictionary, can just find the binary digits sector of memory representing the weight and return it. |
+
+# Todo: Note that this estimate is not accurate.  Assumes that the optimal path is dynamic.
 
 ### Part 2c: Precomputation Complexity
 
 > State the total complexity and show the arithmetic. Two to three lines max.
 
-- **Number of Dijkstra runs:** _your answer_
-- **Cost per run:** _your answer_
-- **Total complexity:** _your answer_
-- **Justification (one line):** _your answer_
+- **Number of Dijkstra runs:** The number of Dijkstra runs is defined by the size of the input array. [1]  Dijkstra will be run as many times as the max length of the outer array in the 2d array containing the nodes. [1]
+- **Cost per run:** The cost per run is O(n^2), where n is the size of the outer length of the input array or the length of the longest item in the array. [2]  Whichever one is larger will end up being the value for n in the time complexity function f(n) = O(n^2). [2]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2]
+- **Total complexity:** The total complexity for the function is O(n^4), where n is the size of the outer length of the input array or the length of the maximum length item in the array. [2]  Whichever one is larger will end up being the value for n in the time complexity function of f(n) = O(n^4). [2]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2]
+- **Justification (one line):** This is because the outer function calling the Dijkstra algorithm recursively has a time complexity of O(n^2) while the inner time complexity of the Dijkstra algorithm is O(n^2). [1]
 
 ---
 
@@ -183,4 +185,8 @@ _Your answer here._
 
 > Bullet list. If none beyond lecture notes, write that.
 
-- _Your references here._
+- [1] https://sdsu.instructure.com/courses/199070/pages/single-source-shortest-path-algorithms-2?module_item_id=5959856.
+- [2] https://sdsu.instructure.com/courses/199070/files/19768796?module_item_id=5651072.
+- [3] https://sdsu.instructure.com/courses/199070/files/20659890?module_item_id=5895131.
+- [4] https://docs.python.org/3/.
+- [5] https://primer.dynamobim.org/10_Custom-Nodes/10-4_Python.html.
