@@ -36,9 +36,9 @@
 
 ---
 
-## Entry 3 – [Date]: [Short description]
+## Entry 3 – 05/13/2026: Added all parts of part 3 - 5 except some code.
 
-_Your entry here._
+    All parts of the code from 3 to 5 except some of the code have been added.  This means that the code matching as intended up to the section I stopped at.  This will allow for backtracing.  All bugs in the incrementors for relics have been fixed and the solution determines the active paths with the least amount of fuel.  This resolves a lot of the problems using the greedy solution as a direct result.  
 
 ---
 
@@ -58,10 +58,10 @@ _Your entry here._
 | Part | Estimated Hours |
 |---|---|
 | Part 1: Problem Analysis | 2 Hours |
-| Part 2: Precomputation Design | |
-| Part 3: Algorithm Correctness | |
-| Part 4: Search Design | |
-| Part 5: State and Search Space | |
+| Part 2: Precomputation Design | 4 Hours |
+| Part 3: Algorithm Correctness | 2 Hours |
+| Part 4: Search Design | 2 Hours |
+| Part 5: State and Search Space | 1 Hour |
 | Part 6: Pruning | |
 | Part 7: Implementation | |
 | README and DEVLOG writing | |

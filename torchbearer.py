@@ -31,7 +31,12 @@ def explain_problem():
     Returns
     -------
     str
-        A single Dijkstra-algorithm process being run is not sufficient since it 
+        Your Part 1 README answers, written as a string.
+        Must match what you wrote in README Part 1.
+
+    TODO
+    """
+    return """A single Dijkstra-algorithm process being run is not sufficient since it 
         cannot choose which path covers every relic chamber. It can also not 
         determine if each node on the path will be accessible from the last node 
         on the path it chooses using the Dijkstra algorithm without being run 
@@ -41,11 +46,7 @@ def explain_problem():
         inter-location costs decision leads to an optimal solution.  This is a 
         search over orders and not a single computation since it requires us to 
         determine which of the shortest paths found using Dijkstra's shortest 
-        algorithm is the optimal solution with the least fuel used.
-
-    TODO
-    """
-    return "TODO"
+        algorithm is the optimal solution with the least fuel used."""
 
 
 # =============================================================================
@@ -157,7 +158,29 @@ def precompute_distances(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    # Create a empty list for storing relics.
+    vistedRelics = [None]
+
+    # Create a return dictionary for the data to be placed in. 
+    returnNodeLength = dict[None, None]
+
+    # Select a source with the given data.
+    source = select_sources(spawn=spawn.this, relics=relics.this, exit_node=exit_node.this)
+
+    # Create a for loop for each of the element in the source.
+    for element in source:
+        # For each element run dijkstra algorithm on the element as the source.
+        lengthDict = run_dijkstra(graph, element)
+
+        # For each of the elements in the source append the element to the return list.
+        returnNodeLength.append(element, lengthDict)
+
+        # Record relics visited.
+        if (element != source[0] or element != element[-1]):
+            vistedRelics.append(element)
+
+    # Return the precomputed distances lookup for every source in you destination table.
+    return returnNodeLength
 
 
 # =============================================================================
@@ -174,7 +197,19 @@ def dijkstra_invariant_check():
 
     TODO
     """
-    return "TODO"
+    return """Before the first iteration, the invariant cases should contain an index 
+        of the first key in the dictionary.  The non-finalized pairs should 
+        contain the first element in a given row of non-finalized pairs.  
+        Because the program makes sure that upon each iteration, it has not
+        gotten past the destination.  It is also because the values for the min 
+        distances are added to the output array using dynamic programming.  The 
+        invariant guarantees that the algorithm ends since the inner loop always 
+        terminates once it has gotten to the end of the list or the destination.  
+        The outer loop terminates after it has accounted for every node in the 
+        list.  The correct distance, as determined by the Dijkstra shortest path 
+        algorithm, is used to plot the path, which would be the optimal path for 
+        the Torchbearer."""
+
 
 
 # =============================================================================
@@ -191,7 +226,28 @@ def explain_search():
 
     TODO
     """
-    return "TODO"
+    return "The greedy method fails because it finds all greedy solutions and " \
+    "the optimal solution.  This means that it is unable to determine which good " \
+    "solutions are optimal out of all the solutions that are provided.  One " \
+    "example of a solution that does not work well is when you have two different " \
+    "greedy paths {2, 4, 8} and {5, 7, 9}. The greedy algorithm sees them both as " \
+    "perfectly valid; however, path one has a cost of 14, while path two has a cost " \
+    "of 21. This means that it cannot determine which path is more efficient, and the " \
+    "torchbearer loses more fuel as a direct result.   However, both solutions provided" \
+    "are the greedy solution found using dijkstra algorithm.  A greedy pick is a " \
+    "choice that includes the maximum possible decisions that are smallest based on " \
+    "the current choice.  How effective are choices measured using the weight?  " \
+    "The number of decisions is returned based on how many nodes are returned." \
+    "The optimal choice, if all choices are optimal, leads to the global optimal." \
+    "This choice is the most fuel-efficient set of greedy choices allowed." \
+    "The decision at each choice must be made by factoring into account all " \
+    "possible greedy decisions and then choosing the greediest decision.  The " \
+    "greedy decision loses since many greedy decisions cost more fuel than the " \
+    "optimal decision.  There are more greedy decisions available for any set of " \
+    "stops that are less efficient than the optimal decision.  Hence, this " \
+    "reasoning is why the greedy decision loses as a direct result.  The " \
+    "algorithm must explore the order of elements that is the most efficient " \
+    "and hits the most destinations when factoring into account the cost."
 
 
 # =============================================================================

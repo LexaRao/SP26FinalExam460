@@ -43,10 +43,10 @@
 > Fill in the table. No prose required.
 
 | Data structure name | Dictionary |
-| What the keys represent | Key represents the input value that is used to match the data. |
-| What the values represent | The value represents the distance stored in the dictionary for a given key. |
-| Lookup time complexity | The lookup time complexity is O(n), given that the whole dictionary must be searched for one length. |
-| Why O(1) lookup is possible | This is possible given that if the key is provided and the algorithm does not have to search for it, the C++ compiler, interpreting the dictionary, can just find the binary digits sector of memory representing the weight and return it. |
+| What the keys represent | Key represents the input value that is used to match the data. [2] |
+| What the values represent | The value represents the distance stored in the dictionary for a given key. [2] |
+| Lookup time complexity | The lookup time complexity is O(n), given that the whole dictionary must be searched for one length. [2] |
+| Why O(1) lookup is possible | This is possible given that if the key is provided and the algorithm does not have to search for it, the C++ compiler, interpreting the dictionary, can just find the binary digits sector of memory representing the weight and return it. [2] |
 
 # Todo: Note that this estimate is not accurate.  Assumes that the optimal path is dynamic.
 ### Part 2c: Precomputation Complexity
@@ -71,29 +71,32 @@
 > Do not copy the invariant text from the spec.
 
 - **For nodes already finalized (in S):**
-  _Your answer here._
+  * The invariant means that the function is still iterating through a level of elements in the dictionary for a given node value. [4][6]
 
 - **For nodes not yet finalized (not in S):**
-  _Your answer here._
+  * The invariants mean that the function is iterating through all of the possible nodes that act as keys for the dictionary. [4][6]
 
 ### Part 3b: Why Each Phase Holds
 
 > One to two bullets per phase. Maintenance must mention nonnegative edge weights.
 
 - **Initialization : why the invariant holds before iteration 1:**
-  _Your answer here._
+  * Before the first iteration, the invariant cases should contain an index of the first key in the dictionary. [4][6]
+  * The non-finalized pairs should contain the first element in a given row of non-finalized pairs. [4][6]
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
-  _Your answer here._
+  * Because the program makes sure that upon each iteration, it has not gotten past the destination. [4][6] 
+  * It is also because the values for the min distances are added to the output array using dynamic programming. [4][6]
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
-  _Your answer here._
+  * The invariant guarantees that the algorithm ends since the inner loop always terminates once it has gotten to the end of the list or the destination. [4][6] 
+  * The outer loop terminates after it has accounted for every node in the list. [4][6]
 
 ### Part 3c: Why This Matters for the Route Planner
 
 > One sentence connecting correct distances to correct routing decisions.
 
-_Your answer here._
+* The correct distance, as determined by the Dijkstra shortest path algorithm, is used to plot the path, which would be the optimal path for the Torchbearer. [1]
 
 ---
 
@@ -104,17 +107,36 @@ _Your answer here._
 > State the failure mode. Then give a concrete counter-example using specific node names
 > or costs (you may use the illustration example from the spec). Three to five bullets.
 
-- **The failure mode:** _Your answer here._
-- **Counter-example setup:** _Your answer here._
-- **What greedy picks:** _Your answer here._
-- **What optimal picks:** _Your answer here._
-- **Why greedy loses:** _Your answer here._
+- **The failure mode:** 
+  * The greedy method fails because it finds all greedy solutions and the optimal solution. [1] 
+  * This means that it is unable to determine which good solutions are optimal out of all the solutions that are provided. [1]
+
+- **Counter-example setup:** 
+  * One example of a solution that does not work well is when you have two different greedy paths {2, 4, 8} and {5, 7, 9}. [1]
+  * The greedy algorithm sees them both as perfectly valid; however, path one has a cost of 14, while path two has a cost of 21. [1]
+  * This means that it cannot determine which path is more efficient, and the torchbearer loses more fuel as a direct result. [1]
+  * However, both solutions provided are the greedy solution found using dijkstra algorithm. [1]  
+
+- **What greedy picks:** 
+  * A greedy pick is a choice that includes the maximum possible decisions that are smallest based on the current choice. [1]
+  * How effective are choices measured using the weight? [1]
+  * The number of decisions is returned based on how many nodes are returned. [1]
+
+- **What optimal picks:** 
+  * The optimal choice, if all choices are optimal, leads to the global optimal. [1]
+  * This choice is the most fuel-efficient set of greedy choices allowed. [1]
+  * The decision at each choice must be made by factoring into account all possible greedy decisions and then choosing the greediest decision. [1]
+
+- **Why greedy loses:** 
+  * The greedy decision loses since many greedy decisions cost more fuel than the optimal decision. [1]
+  * There are more greedy decisions available for any set of stops that are less efficient than the optimal decision. [1]
+  * Hence, this reasoning is why the greedy decision loses as a direct result. [1]
 
 ### What the Algorithm Must Explore
 
 > One bullet. Must use the word "order."
 
-- _Your answer here._
+  * The algorithm must explore the order of elements that is the most efficient and hits the most destinations when factoring into account the cost. [1]
 
 ---
 
@@ -127,9 +149,9 @@ _Your answer here._
 
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | | | |
-| Relics already collected | | | |
-| Fuel cost so far | | | |
+| Current location | optimalCostValue | float | The smallest amount of fuel used for trip using greedy solution. [3] |
+| Relics already collected | vistedRelics | List | Each possible greedy path that contains relics to collect. [3] |
+| Fuel cost so far | lengthDict | Dictionary | The fuel cost for every possible greedy path. [1] |
 
 ### Part 5b: Data Structure for Visited Relics
 
@@ -137,18 +159,20 @@ _Your answer here._
 
 | Property | Your answer |
 |---|---|
-| Data structure chosen | |
-| Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected | Time complexity: |
-| Operation: unmark a relic (backtrack) | Time complexity: |
-| Why this structure fits | |
+| Data structure chosen | List |
+| Operation: check if relic already collected | Time complexity: O(n) [2] |
+| Operation: mark a relic as collected | Time complexity: O(1) [2] |
+| Operation: unmark a relic (backtrack) | Time complexity: O(n) [2] |
+| Why this structure fits | This data structure first since it is appending each new visted node from the data structure containing source to the relics visted list after it has been visted. [4]  Becuase of dynamic programming this means that this list is able to expand as long as the computer has memory. [4] |
 
 ### Part 5c: Worst-Case Search Space
 
 > Two bullets.
 
-- **Worst-case number of orders considered:** _Your answer (in terms of k)._
-- **Why:** _One-line justification._
+- **Worst-case number of orders considered:** 
+  * The worse case time complexity is the omega-case, k = O(k). [2]
+- **Why:** 
+  * This is because the code appends all of the visted relics to the visited list so the search time is just the length of the list whick is k. [2]
 
 ---
 
@@ -187,3 +211,4 @@ _Your answer here._
 - [3] https://sdsu.instructure.com/courses/199070/files/20659890?module_item_id=5895131.
 - [4] https://docs.python.org/3/.
 - [5] https://primer.dynamobim.org/10_Custom-Nodes/10-4_Python.html.
+- [6] https://www.cs.cornell.edu/courses/JavaAndDS/loops/01aloop1.html.
