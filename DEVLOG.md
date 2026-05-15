@@ -23,7 +23,7 @@
     
     These programs will be implemented using the template.  This includes the function laid out in the torchbearer.py assignment.  The data from the README.md document will be used to help develop the function within the touchbearer.py portion of the project.  It will aid in making sure the project works as intended.  This document serves to document the toucherbearer.py assignment.  
     
-    I will be testing this project using Python.  The scripts will be tested using Visual Studio.  The data from the Assignment.md document will be used to write a testing script called toucherbearer-tester.md.  This will be used to test the project's integrity if it cannot be tested on Python alone.  This will also speed up the development time.  Your feedback on this project is helpful, so please let me know if you have any in the discussion section of this repo.
+    I will be testing this project using Python.  The scripts will be tested using Visual Studio.  The data from the Assignment.md document will be used to write a testing script called toucherbearer-tester.md.  This will be used to test the project's integrity if it cannot be tested on Python alone.  This will also speed up the development time.  As agreed upon in class I will laos test the code using AI to make sure their are no errors in the code.  Your feedback on this project is helpful, so please let me know if you have any in the discussion section of this repo.
 
 ---
 
@@ -47,7 +47,13 @@
 > Required. Written after your implementation is complete. Describe what you would
 > change or improve given more time.
 
-    I have written all parts of the code bases.  The program does not unpack the data from the test graders.  I hope to create a later version that can unpack the data as intended which prevents errors in the program.  This will prevent these errors from occuring.  However all the individual units work as intended.  I am submitting the data so that I can be accessed by anyone.  My other hope is to test the function so they will work as intended and will not have any problems in the implementation that prevent the autograder from grading the assignment.  
+    I have written all parts of the code bases.  The program does not unpack the data from the test graders.  I hope to create a later version that can unpack the data as intended which prevents errors in the.  This will prevent these errors from occuring.  However all the individual units work as intended.  I am submitting the data so that I can be accessed by anyone.  My other hope is to test the function so they will work as intended and will not have any problems in the implementation that prevent the autograder from grading the assignment.  
+
+## Entry 5 - 05/14/2026: Debugging.
+
+> Changes required for implementation.
+    
+    I have altern the function so they complete with the grader proticals.  I have removed the null pointer references in the code and instead have added set().  I have included code that will not break upon usage for dijkstra algorithm.  I have included updated code for exploring the vectors that does not break upon usage.  I have also included minor changes in the code.  
 
 ---
 
@@ -57,12 +63,12 @@
 
 | Part | Estimated Hours |
 |---|---|
-| Part 1: Problem Analysis | 2 Hours |
-| Part 2: Precomputation Design | 4 Hours |
-| Part 3: Algorithm Correctness | 2 Hours |
-| Part 4: Search Design | 2 Hours |
-| Part 5: State and Search Space | 1 Hour |
-| Part 6: Pruning | |
-| Part 7: Implementation | |
-| README and DEVLOG writing | |
+| Part 1: Problem Analysis | 120 Minutes |
+| Part 2: Precomputation Design | 240 Minutes |
+| Part 3: Algorithm Correctness | 120 Minutes |
+| Part 4: Search Design | 120 Minutes |
+| Part 5: State and Search Space | 60 Minutes |
+| Part 6: Pruning | 240 Minutes |
+| Part 7: Implementation | 480 Minutes |
+| README and DEVLOG writing | 240 Minutes |
 | **Total** | |
