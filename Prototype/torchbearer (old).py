@@ -18,7 +18,7 @@ Submit this file as: torchbearer.py
 """
 
 import heapq
-Node = str
+from platform import node
 debuggerMode = True
 
 
@@ -199,7 +199,7 @@ def precompute_distances(graph, spawn, relics, exit_node):
         # Try the process of appending the data.
         try:
             # Record relics visited.
-            if (source != [None] and (element != source[0] or element != element[-1])):
+            if (source != [None] and (element != source[0] or element != source[-1])):
                 vistedRelics.append(element)
         except TypeError as E:
             if debuggerMode == True:
@@ -307,18 +307,12 @@ def find_optimal_route(dist_table: dict[node, dict[node, float]], spawn: node, r
     # Create a variable to contain the minimal fuel costs.
     minFuelCost = 0
 
-    # Calculate the total cost using this route.
-    minNode = min(dist_table[spawn])
-    curNodeSet = dist_table[spawn]
-    minNodeVal = curNodeSet[minNode]
-    minFuelCost = float(minFuelCost) + float(minNodeVal)
-
     # Iterate over every element in the distance table.
     for relic in dist_table:
         # Determine if the value is in the list of relics.
         for pathRelic in relics:
             # Use the if then logic to determine the value.
-            if (relic != spawn and relic != exit_node and relic == pathRelic):
+            if (relic == pathRelic):
                 # Append this value onto the list.
                 routeList.append(min(relic))
 
@@ -334,14 +328,6 @@ def find_optimal_route(dist_table: dict[node, dict[node, float]], spawn: node, r
 
     # Place the destination node in the list of nodes as well.
     routeList.append(exit_node)
-
-    # Find the min fuel cost.
-    exitVisted = exit_node in routeList
-    if (not(exitVisted)):
-        minNode = min(dist_table[exit_node])
-        curNodeSet = dist_table[exit_node]
-        lastNodeVal = curNodeSet[minNode]
-        minFuelCost += lastNodeVal
 
     # Create a optimal route list.
     optimalRoute = float(minFuelCost), list(routeList)
@@ -406,7 +392,8 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
         relics_visited_order.append(curMinRelic)
 
         # Dequeue it from relics remaining.  
-        del(relics_remaining[curMinRelic])
+        if (len(relics_remaining) > 0 and curMinRelic in relics_remaining):
+            del(relics_remaining[curMinRelic])
 
         # Add the current relics for the best solution found so far.
         best.append(curMinRelic)

@@ -57,7 +57,7 @@
 
 ---
 
-## Final Entry – [Date]: Time Estimate
+## Final Entry – [05/14/2026]: Time Estimate: 1650.
 
 > Required. Estimate minutes spent per part. Honesty is expected; accuracy is not graded.
 
@@ -69,6 +69,6 @@
 | Part 4: Search Design | 120 Minutes |
 | Part 5: State and Search Space | 60 Minutes |
 | Part 6: Pruning | 240 Minutes |
-| Part 7: Implementation | 480 Minutes |
+| Part 7: Implementation | 510 Minutes |
 | README and DEVLOG writing | 240 Minutes |
-| **Total** | |
+| **Total** | 1650 |

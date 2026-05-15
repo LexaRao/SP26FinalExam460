@@ -17,13 +17,13 @@
 > per question. Each bullet should be 1-2 sentences max.
 
 - **Why a single shortest-path run from S is not enough:**
-  * A single Dijkstra-algorithm process being run is not sufficient since it cannot choose which path covers every relic chamber. [1]  It can also not determine if each node on the path will be accessible from the last node on the path it chooses using the Dijkstra algorithm without being run more than once. [1]
+  * A single Dijkstra-algorithm process being run is not sufficient since it cannot choose which path covers every relic chamber. [1][9]  It can also not determine if each node on the path will be accessible from the last node on the path it chooses using the Dijkstra algorithm without being run more than once. [1][9]
 
 - **What decision remains after all inter-location costs are known:**
   * After the travel costs are known, the remaining decision is to calculate the cheapest path that uses the least amount of fuel. [1]  Calculating this path will require determining which of the inter-location costs decision leads to an optimal solution. [3]
 
 - **Why this requires a search over orders (one sentence):**
-  * This is a search over orders and not a single computation since it requires us to determine which of the shortest paths found using Dijkstra's shortest algorithm is the optimal solution with the least fuel used. [1][3]
+  * This is a search over orders and not a single computation since it requires us to determine which of the shortest paths found using Dijkstra's shortest algorithm is the optimal solution with the least fuel used. [1][3][9]
 
 ---
 
@@ -54,9 +54,9 @@
 > State the total complexity and show the arithmetic. Two to three lines max.
 
 - **Number of Dijkstra runs:** The number of Dijkstra runs is defined by the size of the input array. [1]  Dijkstra will be run as many times as the max length of the outer array in the 2d array containing the nodes. [1]
-- **Cost per run:** The cost per run is O(n^2), where n is the size of the outer length of the input array or the length of the longest item in the array. [2]  Whichever one is larger will end up being the value for n in the time complexity function f(n) = O(n^2). [2]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2]
-- **Total complexity:** The total complexity for the function is O(n^4), where n is the size of the outer length of the input array or the length of the maximum length item in the array. [2]  Whichever one is larger will end up being the value for n in the time complexity function of f(n) = O(n^4). [2]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2]
-- **Justification (one line):** This is because the outer function calling the Dijkstra algorithm recursively has a time complexity of O(n^2) while the inner time complexity of the Dijkstra algorithm is O(n^2). [1]
+- **Cost per run:** The cost per run is O(E + Vlog(V)), where n is the size of the outer length of the input array or the length of the longest item in the array. [2][8][9]  Whichever one is larger will end up being the value for n in the time complexity function f(n) = O(E + Vlog(v)). [2]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2][8][9]
+- **Total complexity:** The total complexity for the function is O((E + VLog(V))^2), where n is the size of the outer length of the input array or the length of the maximum length item in the array. [2]  Whichever one is larger will end up being the value for n in the time complexity function of f(n) = O((E + VLog(V)))^2). [2][9]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2]
+- **Justification (one line):** This is because the outer function calling the Dijkstra algorithm recursively has a time complexity of O(n^2) while the inner time complexity of the Dijkstra algorithm is O(E + VLog(V)). [1][9]
 
 ---
 
@@ -81,16 +81,16 @@
 > One to two bullets per phase. Maintenance must mention nonnegative edge weights.
 
 - **Initialization : why the invariant holds before iteration 1:**
-  * Before the first iteration, the invariant cases should contain an index of the first key in the dictionary. [4][6]
-  * The non-finalized pairs should contain the first element in a given row of non-finalized pairs. [4][6]
+  * Before the first iteration, the invariant cases should contain an index of the first key in the dictionary. [4][6][9]
+  * The non-finalized pairs should contain the first element in a given row of non-finalized pairs. [4][6][9]
 
 - **Maintenance : why finalizing the min-dist node is always correct:**
-  * Because the program makes sure that upon each iteration, it has not gotten past the destination. [4][6] 
-  * It is also because the values for the min distances are added to the output array using dynamic programming. [4][6]
+  * Because the program makes sure that upon each iteration, it has not gotten past the destination. [4][6][9] 
+  * It is also because the values for the min distances are added to the output array using dynamic programming. [4][6][9]
 
 - **Termination : what the invariant guarantees when the algorithm ends:**
-  * The invariant guarantees that the algorithm ends since the inner loop always terminates once it has gotten to the end of the list or the destination. [4][6] 
-  * The outer loop terminates after it has accounted for every node in the list. [4][6]
+  * The invariant guarantees that the algorithm ends since the inner loop always terminates once it has gotten to the end of the list or the destination. [4][6][9] 
+  * The outer loop terminates after it has accounted for every node in the list. [4][6][9]
 
 ### Part 3c: Why This Matters for the Route Planner
 
@@ -209,3 +209,5 @@
 - [5] https://primer.dynamobim.org/10_Custom-Nodes/10-4_Python.html.
 - [6] https://www.cs.cornell.edu/courses/JavaAndDS/loops/01aloop1.html.
 - [7] https://www.geeksforgeeks.org/python/append-a-value-to-a-dictionary-python/.
+- [8] https://chatgpt.com/g/g-6892b59f30f081918d0108ab998c2d1a-stack-overflowed/c/6a069afa-a648-8330-b30c-b0e154b4de4a.
+- [9] https://sdsu.instructure.com/courses/199070/modules/items/5959838.
