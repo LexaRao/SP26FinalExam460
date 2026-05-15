@@ -127,7 +127,7 @@ def run_dijkstra(graph, source):
         greedyPath = [source, 0.0]
 
         # Determine the entry of the min length;.
-        minVal = min(elementX[indexVal:])
+        minVal = min(graph[elementX][indexVal:])
 
         # Cross examine the current element against all other elements to determine if it has the smallest length.
         for elementY in graph[elementX]: # Cycle sorting.
@@ -334,7 +334,7 @@ def find_optimal_route(dist_table: dict[node, dict[node, float]], spawn: node, r
     minFuelCost += lastNodeVal
 
     # Create a optimal route list.
-    optimalRoute = tuple[float(minFuelCost), list(routeList)]
+    optimalRoute = float(minFuelCost), list(routeList)
 
     # Return the value for the route.
     return optimalRoute
@@ -459,7 +459,7 @@ def solve(graph: dict[node, list[tuple[node, int]]], spawn: node, relics: list[n
 
     # Determine cases.
     if (returnVal == None or returnVal == [0, [None]]):
-        return tuple[float('inf'), emptySet]
+        return float('inf'), emptySet
     # Return the found return case.
     else:
         return returnVal
