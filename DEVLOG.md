@@ -42,12 +42,12 @@
 
 ---
 
-## Entry 4 – [Date]: Post-Implementation Reflection
+## Entry 4 – 05/14/2026: Post-Implementation Reflection
 
 > Required. Written after your implementation is complete. Describe what you would
 > change or improve given more time.
 
-_Your entry here._
+    I have written all parts of the code bases.  The program does not unpack the data from the test graders.  I hope to create a later version that can unpack the data as intended which prevents errors in the program.  This will prevent these errors from occuring.  However all the individual units work as intended.  I am submitting the data so that I can be accessed by anyone.  My other hope is to test the function so they will work as intended and will not have any problems in the implementation that prevent the autograder from grading the assignment.  
 
 ---
 

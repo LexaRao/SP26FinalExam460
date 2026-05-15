@@ -1,5 +1,5 @@
 """
-CS 460 – Algorithms: Final Programming Assignment
+CS 460 - Algorithms: Final Programming Assignment
 The Torchbearer
 
 Student Name: __Lexa Hope________________
@@ -18,8 +18,8 @@ Submit this file as: torchbearer.py
 """
 
 import heapq
-from json.encoder import INFINITY
 from platform import node
+debuggerMode = True
 
 
 # =============================================================================
@@ -74,7 +74,7 @@ def select_sources(spawn, relics, exit_node):
     # Append the head none labled the spawn node to the returnSet.
     returnSet.add(spawn)
 
-    # For all the lements in the relics list append them to the returnSet.
+    # For all the elements in the relics list append them to the returnSet.
     for element in relics:
         returnSet.add(element)
 
@@ -104,32 +104,51 @@ def run_dijkstra(graph, source):
 
     TODO
     """
+    # Add value for inifity.
+    INFINITY = float('inf')
+
     # Create a dictionary for storing the minimum elements.
-    lengthDict = dict[node, float]
-    lengthDict = [source, 0.0]
+    lengthDict = {source: 0.0}
     for element in graph: # Add the empty dictionary list.
-        lengthDict.append(element, INFINITY)
+        lengthDict[element] = INFINITY
 
     # Create a for loop for iterating through each of the nodes and determine the lower cost from source to that element.
     for elementX in graph:
         # Create the required set for storing the greedy solution.
-        greedyPath = [source, 0]
         optimalCost = {0} # Keep track of optimal cost by removing duplicate entries.
 
         # Create a value for storing the last wieght.
         lastWeight = INFINITY
 
+        # Index value.
+        indexVal = 0
+
+        # Greedy path from source.
+        greedyPath = [source, 0.0]
+
+        # Determine the entry of the min length;.
+        minVal = min(elementX[indexVal:])
+
         # Cross examine the current element against all other elements to determine if it has the smallest length.
-        for elementY in elementX: # Cycle sorting.
-            if elementY != elementX[0]: # If the element are not equal.
-                if (elementY[1] < lastWeight): # Append the greedy choice.
-                    greedyPath.append(elementY[0], elementY[1]) # Append the smaller length.
-                    optimalCost.add(elementY[1]) # Add elements to a set to prevent duplicate entries.
-                    lastWeight = elementY[1] # Determine the smallest last weight.
-            else: # The algorithm has reach the destination path so exit the loop.
-                greedyPath.append(elementY[0], elementY[1]) # Append the destination cost.
-                optimalCost.add(elementY[1]) # Add the transaction cost to get to the destination to the entries.
-                break
+        for elementY in graph[elementX]: # Cycle sorting.
+            # Cross referent the min value to determine if we have passed it.
+            if (elementY == minVal or elementY == elementX[0]):
+                if elementY != elementX[0]: # If the element are not equal.
+                    if (elementY[1] < lastWeight): # Append the greedy choice.
+                        greedyPath.append([elementY[0], elementY[1]]) # Append the smaller length.
+                        optimalCost.add(elementY[1]) # Add elements to a set to prevent duplicate entries.
+                        lastWeight = elementY[1] # Determine the smallest last weight.
+                else: # The algorithm has reach the destination path so exit the loop.
+                    greedyPath.append([elementY[0], elementY[1]]) # Append the destination cost.
+                    optimalCost.add(elementY[1]) # Add the transaction cost to get to the destination to the entries.
+                    break
+            else: # Calculate the new min value.
+                if (len(elementX[indexVal:]) != 0):
+                    minVal = min(elementX[indexVal:])
+
+
+            # Increment index.
+            indexVal += 1
 
         # Determine the optimal cost of all element in the list.
         optimalCostValue = sum(optimalCost)
@@ -159,13 +178,13 @@ def precompute_distances(graph, spawn, relics, exit_node):
     TODO
     """
     # Create a empty list for storing relics.
-    vistedRelics = [None]
+    vistedRelics = [node]
 
     # Create a return dictionary for the data to be placed in. 
-    returnNodeLength = dict[None, None]
+    returnNodeLength = {}
 
     # Select a source with the given data.
-    source = select_sources(spawn=spawn.this, relics=relics.this, exit_node=exit_node.this)
+    source = select_sources(spawn=spawn, relics=relics, exit_node=exit_node)
 
     # Create a for loop for each of the element in the source.
     for element in source:
@@ -173,11 +192,16 @@ def precompute_distances(graph, spawn, relics, exit_node):
         lengthDict = run_dijkstra(graph, element)
 
         # For each of the elements in the source append the element to the return list.
-        returnNodeLength.append(element, lengthDict)
+        returnNodeLength[element] = lengthDict
 
-        # Record relics visited.
-        if (element != source[0] or element != element[-1]):
-            vistedRelics.append(element)
+        # Try the process of appending the data.
+        try:
+            # Record relics visited.
+            if (source != [None] and (element != source[0] or element != element[-1])):
+                vistedRelics.append(element)
+        except TypeError as E:
+            if debuggerMode == True:
+                print("Debugger: Source is empty.")
 
     # Return the precomputed distances lookup for every source in you destination table.
     return returnNodeLength
@@ -254,7 +278,7 @@ def explain_search():
 # PARTS 5 + 6
 # =============================================================================
 
-def find_optimal_route(dist_table, spawn, relics, exit_node):
+def find_optimal_route(dist_table: dict[node, dict[node, float]], spawn: node, relics: list[node], exit_node: node):
     """
     Parameters
     ----------
@@ -274,7 +298,46 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    # Add the entry to the distance node.
+    routeList = [None]
+    routeList.append(spawn)
+
+    # Create a variable to contain the minimal fuel costs.
+    minFuelCost = 0.0
+
+    # Iterate over every element in the distance table.
+    for relic in dist_table:
+        # Determine if the value is in the list of relics.
+        for pathRelic in relics:
+            # Use the if then logic to determine the value.
+            if (relic != spawn and relic != exit_node and relic == pathRelic):
+                # Append this value onto the list.
+                routeList.append(min(relic))
+
+                # Calculate the total cost using this route.
+                minNode = min(dist_table[relic])
+                curNodeSet = dist_table[relic]
+                minNodeVal = curNodeSet[minNode]
+                minFuelCost = float(minFuelCost) + float(minNodeVal)
+
+            # If the relic is equal to the destination node please exit the loop.
+            if (relic == exit_node):
+                break
+
+    # Place the destination node in the list of nodes as well.
+    routeList.append(exit_node)
+
+    # Find the min fuel cost.
+    minNode = min(dist_table[exit_node])
+    curNodeSet = dist_table[exit_node]
+    lastNodeVal = curNodeSet[minNode]
+    minFuelCost += lastNodeVal
+
+    # Create a optimal route list.
+    optimalRoute = tuple[float(minFuelCost), list(routeList)]
+
+    # Return the value for the route.
+    return optimalRoute
 
 
 def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
@@ -306,14 +369,69 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
-    pass
+    # Create a varible for reaching the current location.
+    curLocationReached = False
 
+    # Append the value for the current node to the best path.
+    if (best == [None]):
+        best.append(current_loc)
+
+    # Define relic as equal to the current node.
+    relic = dist_table[current_loc]
+        
+    # Determine if the relic has already been visted and is not a current node or exit node.
+    if (relic != current_loc and relic != exit_node and relic in relics_remaining):
+        # Find the optimal path at the current relic using a dynamic function call instead 
+        # of deleting entries in dist_table.this for safety.  This condition prevents paths that are 
+        # not using the minimal amount of fuel from interfering.
+        curMinRelic = min(relic)
+                
+        # Determine the current min cost.
+        minCost = relic[curMinRelic]
+
+        # Add this to the total cost so far.
+        cost_so_far += minCost
+
+        # Add this to the current relics visted in the correct order.
+        relics_visited_order.append(curMinRelic)
+
+        # Dequeue it from relics remaining.  
+        del(relics_remaining[curMinRelic])
+
+        # Add the current relics for the best solution found so far.
+        best.append(curMinRelic)
+    elif (relic == exit_node or nextElement == None): # Exit the current node. (Base case.)
+        # Append the end node onto the current path.
+        best.append(exit_node)
+
+        # Exit since this is the last position in the path.
+        return
+
+    
+    # Define the next node based on the position of the first node.
+    nextElement = None
+
+    # Create a value for finding the next value in the current node.
+    for curRelic in dist_table:
+        # If the current location has been reached make sure to get to that position.
+        if curRelic is current_loc:
+            curLocationReached = True
+            continue
+
+        # If the current node has been reach make sure to record the element and break the loop.
+        if curLocationReached == True:
+            nextElement = curRelic
+            break
+
+    # Recurisively call the function.
+    _explore(dist_table=dist_table, current_loc=nextElement, relics_remaining=relics_remaining, relics_visited_order=relics_visited_order,
+             cost_so_far=cost_so_far, exit_node=exit_node, best=best)
 
 # =============================================================================
 # PIPELINE
 # =============================================================================
 
-def solve(graph, spawn, relics, exit_node):
+def solve(graph: dict[node, list[tuple[node, int]]], spawn: node, relics: list[node], exit_node: node):
     """
     Parameters
     ----------
@@ -330,8 +448,21 @@ def solve(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    # Calculate the distance.  
+    distanceFromSource = precompute_distances(graph=graph, spawn=spawn, relics=relics, exit_node=exit_node)
 
+    # Determine the return value based on the prior values.
+    returnVal = find_optimal_route(dist_table=distanceFromSource, spawn=spawn, relics=relics, exit_node=exit_node)
+
+    # The empty set.
+    emptySet = list([None])
+
+    # Determine cases.
+    if (returnVal == None or returnVal == [0, [None]]):
+        return tuple[float('inf'), emptySet]
+    # Return the found return case.
+    else:
+        return returnVal
 
 # =============================================================================
 # PROVIDED TESTS (do not modify)

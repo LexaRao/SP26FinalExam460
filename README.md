@@ -46,7 +46,7 @@
 | What the keys represent | Key represents the input value that is used to match the data. [2] |
 | What the values represent | The value represents the distance stored in the dictionary for a given key. [2] |
 | Lookup time complexity | The lookup time complexity is O(n), given that the whole dictionary must be searched for one length. [2] |
-| Why O(1) lookup is possible | This is possible given that if the key is provided and the algorithm does not have to search for it, the C++ compiler, interpreting the dictionary, can just find the binary digits sector of memory representing the weight and return it. [2] |
+| Why O(1) lookup is possible | This is possible given that if the key is provided and the algorithm does not have to search for it, the Python compiler, interpreting the dictionary, can just find the binary digits sector of memory representing the weight and return it. [2] |
 
 # Todo: Note that this estimate is not accurate.  Assumes that the optimal path is dynamic.
 ### Part 2c: Precomputation Complexity
@@ -108,8 +108,7 @@
 > or costs (you may use the illustration example from the spec). Three to five bullets.
 
 - **The failure mode:** 
-  * The greedy method fails because it finds all greedy solutions and the optimal solution. [1] 
-  * This means that it is unable to determine which good solutions are optimal out of all the solutions that are provided. [1]
+  * The greedy method fails because it finds all greedy solutions and the optimal solution. [1] This means that it is unable to determine which good solutions are optimal out of all the solutions that are provided. [1]
 
 - **Counter-example setup:** 
   * One example of a solution that does not work well is when you have two different greedy paths {2, 4, 8} and {5, 7, 9}. [1]
@@ -169,10 +168,8 @@
 
 > Two bullets.
 
-- **Worst-case number of orders considered:** 
-  * The worse case time complexity is the omega-case, k = O(k). [2]
-- **Why:** 
-  * This is because the code appends all of the visted relics to the visited list so the search time is just the length of the list whick is k. [2]
+- **Worst-case number of orders considered:** The worse case time complexity is the omega-case, k = O(k). [2]
+- **Why:** This is because the code appends all of the visted relics to the visited list so the search time is just the length of the list whick is k. [2]
 
 ---
 
@@ -182,25 +179,24 @@
 
 > Three bullets.
 
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What is tracked:** The best greedy numbers in the set that are larger than the older numbers. [1][3]
+- **When it is used:** After making a greedy choice, determine which greedy decision is optimal. [1][3]
+- **What it allows the algorithm to skip:** The algorithm determines which greedy number is the minimum out of the remaining numbers by skipping through the other numbers till it finds the minimal number and then calculating the new minimal number based on the present location. [1][3]
 
 ### Part 6b: Lower Bound Estimation
 
 > Three bullets.
 
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+- **What information is available at the current state:** The current state tells you what position you are in the outermost loop and what element you are on. [1][7]
+- **What the lower bound accounts for:** The lower bound accounts for the lowest entry in the returned list that takes the least amount of fuel. [1][7]
+- **Why it never overestimates:** Because it determines which value for the total fuel out of the possible values for total fuel can be selected to minimize the possible fuel used during the trip. [1][7=]
 
 ### Part 6c: Pruning Correctness
 
 > One to two bullets. Explain why pruning is safe.
 
-- _Your answer here._
-
----
+- Pruning allows for minimizing the total amount of fuel used while maximizing the likelihood that the torchbearer will make it to all its designated points. [1][7]
+- This deletes unnecessary data by eliminating unnessary paths and choices that are preventing the torchbearer from making it too it's designation since it is using two much fuel. [1][7]
 
 ## References
 
@@ -212,3 +208,4 @@
 - [4] https://docs.python.org/3/.
 - [5] https://primer.dynamobim.org/10_Custom-Nodes/10-4_Python.html.
 - [6] https://www.cs.cornell.edu/courses/JavaAndDS/loops/01aloop1.html.
+- [7] https://www.geeksforgeeks.org/python/append-a-value-to-a-dictionary-python/.
