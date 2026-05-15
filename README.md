@@ -150,7 +150,7 @@
 |---|---|---|---|
 | Current location | optimalCostValue / best_cost | float | The smallest amount of fuel used for the trip using greedy solution. [3] |
 | Relics already collected | visitedRelics / order | List | Each possible greedy path that contains relics to collect. [3] |
-| Fuel cost so far | lengthDict / best_last | Dictionary | The fuel cost for every possible greedy path. [1] |
+| Fuel cost so far | lengthDict / best_last | Dictionary / float | The fuel cost for every possible greedy path. [1] |
 
 ### Part 5b: Data Structure for Visited Relics
 
