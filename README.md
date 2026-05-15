@@ -148,9 +148,9 @@
 
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | optimalCostValue | float | The smallest amount of fuel used for trip using greedy solution. [3] |
-| Relics already collected | vistedRelics | List | Each possible greedy path that contains relics to collect. [3] |
-| Fuel cost so far | lengthDict | Dictionary | The fuel cost for every possible greedy path. [1] |
+| Current location | optimalCostValue / best_cost | float | The smallest amount of fuel used for trip using greedy solution. [3] |
+| Relics already collected | vistedRelics / order | List | Each possible greedy path that contains relics to collect. [3] |
+| Fuel cost so far | lengthDict / best_last | Dictionary | The fuel cost for every possible greedy path. [1] |
 
 ### Part 5b: Data Structure for Visited Relics
 
@@ -168,7 +168,7 @@
 
 > Two bullets.
 
-- **Worst-case number of orders considered:** The worse case time complexity is the omega-case, k = O(k). [2]
+- **Worst-case number of orders considered:** The worse case time complexity is the omega-case, f(k) = O(k). [2]
 - **Why:** This is because the code appends all of the visted relics to the visited list so the search time is just the length of the list whick is k. [2]
 
 ---
