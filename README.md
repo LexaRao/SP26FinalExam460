@@ -5,7 +5,7 @@
 **Course:** CS 460 – Algorithms | Spring 2026
 
 > This README is your project documentation. Write it the way a developer would document
-> their design decisions , bullet points, brief justifications, and concrete examples where
+> their design decisions, bullet points, brief justifications, and concrete examples where
 > required. You are not writing an essay. You are explaining what you built and why you built
 > it that way. Delete all blockquotes like this one before submitting.
 
@@ -31,7 +31,7 @@
 
 ### Part 2a: Source Selection
 
-> List the source node types as a bullet list. For each, one-line reason.
+> List the source node types as a bullet list. For each one-line reason.
 
 | Source Node Type | Why it is a source |
 |---|---|
@@ -43,7 +43,7 @@
 > Fill in the table. No prose required.
 
 | Data structure name | Dictionary |
-| What the keys represent | Key represents the input value that is used to match the data. [2] |
+| What the keys represent | Keys represent the input value that is used to match the data. [2] |
 | What the values represent | The value represents the distance stored in the dictionary for a given key. [2] |
 | Lookup time complexity | The lookup time complexity is O(n), given that the whole dictionary must be searched for one length. [2] |
 | Why O(1) lookup is possible | This is possible given that if the key is provided and the algorithm does not have to search for it, the Python compiler, interpreting the dictionary, can just find the binary digits sector of memory representing the weight and return it. [2] |
@@ -54,8 +54,8 @@
 > State the total complexity and show the arithmetic. Two to three lines max.
 
 - **Number of Dijkstra runs:** The number of Dijkstra runs is defined by the size of the input array. [1]  Dijkstra will be run as many times as the max length of the outer array in the 2d array containing the nodes. [1]
-- **Cost per run:** The cost per run is K = O(n + (n-1)log(n-1)), where n is the size of the outer length of the input array or the length of the longest item in the array. [2][8][9]  Whichever one is larger will end up being the value for n in the time complexity function f(n) = O(n + (n-1)log(n-1)). [2]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2][8][9]
-- **Total complexity:** The total complexity for the function is O((n + (n-1)Log(n-1))^2), where n is the size of the outer length of the input array or the length of the maximum length item in the array. [2]  Whichever one is larger will end up being the value for n in the time complexity function of f(n) = O((n + (n-1)Log(n-1)))^2). [2][9]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2]
+- **Cost per run:** The cost per run is K = f(n) = O(n + (n-1)log(n-1)), where n is the size of the outer length of the input array or the length of the longest item in the array. [2][8][9]  Whichever one is larger will end up being the value for n in the time complexity function f(n) = O(n + (n-1)log(n-1)). [2]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2][8][9]
+- **Total complexity:** The total complexity for the function is O((n + (n-1)Log(n-1))^2), where n is the size of the outer length of the input array or the length of the maximum length item in the array. [2]  Whichever one is larger will end up being the value for n in the time complexity function of f(n) = O((n + (n-1)Log(n-1))^2). [2][9]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2]
 - **Justification (one line):** This is because the outer function calling the Dijkstra algorithm recursively has a time complexity of O(K^2) while the inner time complexity of the Dijkstra algorithm is O(n + (n-1)Log(n-1)). [1][9]
 
 ---
@@ -148,8 +148,8 @@
 
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | optimalCostValue / best_cost | float | The smallest amount of fuel used for trip using greedy solution. [3] |
-| Relics already collected | vistedRelics / order | List | Each possible greedy path that contains relics to collect. [3] |
+| Current location | optimalCostValue / best_cost | float | The smallest amount of fuel used for the trip using greedy solution. [3] |
+| Relics already collected | visitedRelics / order | List | Each possible greedy path that contains relics to collect. [3] |
 | Fuel cost so far | lengthDict / best_last | Dictionary | The fuel cost for every possible greedy path. [1] |
 
 ### Part 5b: Data Structure for Visited Relics
@@ -162,14 +162,14 @@
 | Operation: check if relic already collected | Time complexity: O(n) [2] |
 | Operation: mark a relic as collected | Time complexity: O(1) [2] |
 | Operation: unmark a relic (backtrack) | Time complexity: O(n) [2] |
-| Why this structure fits | This data structure first since it is appending each new visted node from the data structure containing source to the relics visted list after it has been visted. [4]  Becuase of dynamic programming this means that this list is able to expand as long as the computer has memory. [4] |
+| Why this structure fits | This data structure first, since it is appending each new visited node from the data structure containing the source to the relics visited list after it has been visited. [4]  Because of dynamic programming, this means that this list is able to expand as long as the computer has memory. [4] |
 
 ### Part 5c: Worst-Case Search Space
 
 > Two bullets.
 
 - **Worst-case number of orders considered:** The worse case time complexity is the omega-case, f(k) = O(k). [2]
-- **Why:** This is because the code appends all of the visted relics to the visited list so the search time is just the length of the list whick is k. [2]
+- **Why:** This is because the code appends all of the visited relics to the visited list, so the search time is just the length of the list, which is k. [2]
 
 ---
 
@@ -196,7 +196,7 @@
 > One to two bullets. Explain why pruning is safe.
 
 - Pruning allows for minimizing the total amount of fuel used while maximizing the likelihood that the torchbearer will make it to all its designated points. [1][7]
-- This deletes unnecessary data by eliminating unnessary paths and choices that are preventing the torchbearer from making it too it's designation since it is using two much fuel. [1][7]
+- This deletes unnecessary data by eliminating unnecessary paths and choices that are preventing the torchbearer from making it to its destination, since it is using too much fuel. [1][7]
 
 ## References
 
