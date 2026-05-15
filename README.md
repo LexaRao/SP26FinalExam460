@@ -54,9 +54,9 @@
 > State the total complexity and show the arithmetic. Two to three lines max.
 
 - **Number of Dijkstra runs:** The number of Dijkstra runs is defined by the size of the input array. [1]  Dijkstra will be run as many times as the max length of the outer array in the 2d array containing the nodes. [1]
-- **Cost per run:** The cost per run is O(E + Vlog(V)), where n is the size of the outer length of the input array or the length of the longest item in the array. [2][8][9]  Whichever one is larger will end up being the value for n in the time complexity function f(n) = O(E + Vlog(v)). [2]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2][8][9]
-- **Total complexity:** The total complexity for the function is O((E + VLog(V))^2), where n is the size of the outer length of the input array or the length of the maximum length item in the array. [2]  Whichever one is larger will end up being the value for n in the time complexity function of f(n) = O((E + VLog(V)))^2). [2][9]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2]
-- **Justification (one line):** This is because the outer function calling the Dijkstra algorithm recursively has a time complexity of O(n^2) while the inner time complexity of the Dijkstra algorithm is O(E + VLog(V)). [1][9]
+- **Cost per run:** The cost per run is K = O(n + (n-1)log(n-1)), where n is the size of the outer length of the input array or the length of the longest item in the array. [2][8][9]  Whichever one is larger will end up being the value for n in the time complexity function f(n) = O(n + (n-1)log(n-1)). [2]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2][8][9]
+- **Total complexity:** The total complexity for the function is O((n + (n-1)Log(n-1))^2), where n is the size of the outer length of the input array or the length of the maximum length item in the array. [2]  Whichever one is larger will end up being the value for n in the time complexity function of f(n) = O((n + (n-1)Log(n-1)))^2). [2][9]  This is because larger numbers dominate smaller numbers in terms of time complexity. [2]
+- **Justification (one line):** This is because the outer function calling the Dijkstra algorithm recursively has a time complexity of O(K^2) while the inner time complexity of the Dijkstra algorithm is O(n + (n-1)Log(n-1)). [1][9]
 
 ---
 
