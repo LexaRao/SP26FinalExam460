@@ -127,7 +127,8 @@ def run_dijkstra(graph, source):
         greedyPath = [source, 0.0]
 
         # Determine the entry of the min length;.
-        minVal = min(graph[elementX][indexVal:])
+        if (graph[elementX][indexVal:] != None and len(graph[elementX][indexVal:]) != 0):
+            minVal = min(graph[elementX][indexVal:])
 
         # Cross examine the current element against all other elements to determine if it has the smallest length.
         for elementY in graph[elementX]: # Cycle sorting.
