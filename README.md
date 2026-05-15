@@ -189,7 +189,7 @@
 
 - **What information is available at the current state:** The current state tells you what position you are in the outermost loop and what element you are on. [1][7]
 - **What the lower bound accounts for:** The lower bound accounts for the lowest entry in the returned list that takes the least amount of fuel. [1][7]
-- **Why it never overestimates:** Because it determines which value for the total fuel out of the possible values for total fuel can be selected to minimize the possible fuel used during the trip. [1][7=]
+- **Why it never overestimates:** Because it determines which value for the total fuel out of the possible values for total fuel can be selected to minimize the possible fuel used during the trip. [1][7]
 
 ### Part 6c: Pruning Correctness
 
